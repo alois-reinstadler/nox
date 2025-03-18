@@ -20,7 +20,7 @@ export const navMain: SidebarNavItem[] = [
 				href: '/sales'
 			},
 			{
-				title: 'Leistungsverzeichnisse',
+				title: 'Ausschreibungen',
 				href: '/sales/lvs' // leistungsverzeichnis (.onlv)
 			},
 			{

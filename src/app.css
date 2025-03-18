@@ -64,6 +64,7 @@
 		--sidebar-border: hsl(240 3.7% 15.9%);
 		--sidebar-ring: hsl(217.2 91.2% 59.8%);
 	}
+
 	:root {
 		--card: oklch(1 0 0);
 		--card-foreground: oklch(0.145 0 0);
@@ -223,18 +224,35 @@
 	html {
 		scrollbar-color: hsl(215.4 16.3% 46.9% / 0.3);
 	}
-}
-::-webkit-scrollbar {
-	width: 0.5rem;
-	height: 0.5rem;
-}
 
-::-webkit-scrollbar-thumb {
-	border-radius: calc(var(--radius) - 4px);
-	background-color: hsl(var(--muted-foreground) / 0.3) !important;
-}
+	::-webkit-scrollbar {
+		width: 0.5rem;
+		height: 0.5rem;
+	}
 
-::-webkit-scrollbar-track {
-	--tw-bg-opacity: 1 !important;
-	background-color: hsl(var(--muted) / var(--tw-bg-opacity)) !important;
+	::-webkit-scrollbar-thumb {
+		border-radius: calc(var(--radius) - 4px);
+		background-color: hsl(var(--muted-foreground) / 0.3) !important;
+	}
+
+	::-webkit-scrollbar-track {
+		--tw-bg-opacity: 1 !important;
+		background-color: hsl(var(--muted) / var(--tw-bg-opacity)) !important;
+	}
+
+	.background-overlay {
+		background: radial-gradient(
+			ellipse 80% 80% at 50% -30%,
+			rgba(0, 0, 0, 0.55),
+			rgba(255, 255, 255, 0)
+		);
+	}
+
+	.dark .background-overlay {
+		background: radial-gradient(
+			ellipse 80% 80% at 50% -40%,
+			hsl(224, 76%, 48%),
+			rgba(255, 255, 255, 0)
+		);
+	}
 }
