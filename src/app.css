@@ -223,19 +223,18 @@
 	html {
 		scrollbar-color: hsl(215.4 16.3% 46.9% / 0.3);
 	}
+}
+::-webkit-scrollbar {
+	width: 0.5rem;
+	height: 0.5rem;
+}
 
-	::-webkit-scrollbar {
-		width: 0.5rem;
-		height: 0.5rem;
-	}
+::-webkit-scrollbar-thumb {
+	border-radius: calc(var(--radius) - 4px);
+	background-color: hsl(var(--muted-foreground) / 0.3) !important;
+}
 
-	::-webkit-scrollbar-thumb {
-		border-radius: calc(var(--radius) - 4px);
-		background-color: hsl(var(--muted-foreground) / 0.3) !important;
-	}
-
-	::-webkit-scrollbar-track {
-		--tw-bg-opacity: 1 !important;
-		background-color: hsl(var(--muted) / var(--tw-bg-opacity)) !important;
-	}
+::-webkit-scrollbar-track {
+	--tw-bg-opacity: 1 !important;
+	background-color: hsl(var(--muted) / var(--tw-bg-opacity)) !important;
 }

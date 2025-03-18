@@ -1,8 +1,7 @@
 import { type Icon as IconType } from 'lucide-svelte';
-import type { Action } from 'svelte/action';
 
-export type WithUse<P> = P & {
-	use?: Action;
+type WithoutKeys<T, K extends keyof T> = {
+	[P in Exclude<keyof T, K>]: T[P];
 };
 
 export type Icon = typeof IconType;
@@ -36,16 +35,22 @@ export type Metadata = {
 export type NavItem = {
 	title: string;
 	href?: string;
-	disabled?: boolean;
-	external?: boolean;
 	icon?: Icon;
+
+	// decreased opacity
+	disabled?: boolean;
+
+	// open in new tab and add arrow-up-right icon
+	external?: boolean;
+
+	// pill label like "new"
 	label?: string;
+
+	// show active state
 	isActive?: boolean;
 };
 
-export type SidebarNavItem = NavItem & {
-	items: NavItem[];
-};
+export type SidebarNavItem = (WithoutKeys<NavItem, 'href'> & Record<'items', NavItem[]>) | NavItem;
 
 export type SidebarNavGroup = {
 	title: string;
