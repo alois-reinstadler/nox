@@ -1,8 +1,9 @@
 <script lang="ts">
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index.js';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
-	import { Button } from '$lib/components/ui/button';
+	import { Button, buttonVariants } from '$lib/components/ui/button';
 
 	import { page } from '$app/state';
 	import { Breadcrumbs } from 'svelte-breadcrumbs';
@@ -43,10 +44,7 @@
 								<Breadcrumb.Separator />
 								<Breadcrumb.Item>
 									<Breadcrumb.Link href={c.url}>{c.title}</Breadcrumb.Link>
-									<Breadcrumb.Separator />
-									<Breadcrumb.Item>
-										<Breadcrumb.Link href={c.url}>{c.title}</Breadcrumb.Link>
-									</Breadcrumb.Item>
+								</Breadcrumb.Item>
 							{/each}
 						</Breadcrumb.List>
 					</Breadcrumb.Root>
