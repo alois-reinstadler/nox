@@ -20,13 +20,8 @@
 <header
 	class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-in-out group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12"
 >
-<<<<<<< HEAD
-	<div class="container flex w-full items-center justify-between">
-		<div class="container flex items-center gap-2">
-=======
 	<div class="container flex items-center justify-between gap-2">
 		<div class="flex items-center gap-2">
->>>>>>> 729d76fbaa0dd26e28476d22349b26e5223b499f
 			<Sidebar.Trigger class="-ml-1" />
 			<Separator orientation="vertical" class="mx-1 h-4" />
 
@@ -44,32 +39,20 @@
 									{/snippet}
 								</Breadcrumb.Link>
 							</Breadcrumb.Item>
-<<<<<<< HEAD
-							{#each crumbs as c, i (c.url)}
+							{#each crumbs as c, i (c.title)}
 								<Breadcrumb.Separator />
 								<Breadcrumb.Item>
 									<Breadcrumb.Link href={c.url}>{c.title}</Breadcrumb.Link>
-								</Breadcrumb.Item>
-=======
-							{#each crumbs as c, i (c.title)}
-								<div
-									class="flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5"
-									transition:fly={{ y: 10, duration: 150 }}
-								>
 									<Breadcrumb.Separator />
 									<Breadcrumb.Item>
 										<Breadcrumb.Link href={c.url}>{c.title}</Breadcrumb.Link>
 									</Breadcrumb.Item>
-								</div>
->>>>>>> 729d76fbaa0dd26e28476d22349b26e5223b499f
 							{/each}
 						</Breadcrumb.List>
 					</Breadcrumb.Root>
 				{/snippet}
 			</Breadcrumbs>
 		</div>
-<<<<<<< HEAD
-=======
 
 		<div class="flex items-center gap-2">
 			<DropdownMenu.Root>
@@ -89,6 +72,5 @@
 				</DropdownMenu.Content>
 			</DropdownMenu.Root>
 		</div>
->>>>>>> 729d76fbaa0dd26e28476d22349b26e5223b499f
 	</div>
 </header>
