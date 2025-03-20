@@ -7,14 +7,26 @@
 	import { page } from '$app/state';
 	import { Breadcrumbs } from 'svelte-breadcrumbs';
 
+	import { resetMode, setMode } from 'mode-watcher';
+
 	import Home from '$lib/animated-icons/home.svelte';
+	import Sun from '$lib/animated-icons/sun.svelte';
+	import Moon from 'lucide-svelte/icons/moon';
+
+	import { AutoAnimate } from '$lib/hooks/auto-animate.svelte';
+	import { fly } from 'svelte/transition';
 </script>
 
 <header
 	class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-in-out group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12"
 >
+<<<<<<< HEAD
 	<div class="container flex w-full items-center justify-between">
 		<div class="container flex items-center gap-2">
+=======
+	<div class="container flex items-center justify-between gap-2">
+		<div class="flex items-center gap-2">
+>>>>>>> 729d76fbaa0dd26e28476d22349b26e5223b499f
 			<Sidebar.Trigger class="-ml-1" />
 			<Separator orientation="vertical" class="mx-1 h-4" />
 
