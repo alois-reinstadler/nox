@@ -44,16 +44,51 @@
 									{/snippet}
 								</Breadcrumb.Link>
 							</Breadcrumb.Item>
+<<<<<<< HEAD
 							{#each crumbs as c, i (c.url)}
 								<Breadcrumb.Separator />
 								<Breadcrumb.Item>
 									<Breadcrumb.Link href={c.url}>{c.title}</Breadcrumb.Link>
 								</Breadcrumb.Item>
+=======
+							{#each crumbs as c, i (c.title)}
+								<div
+									class="flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5"
+									transition:fly={{ y: 10, duration: 150 }}
+								>
+									<Breadcrumb.Separator />
+									<Breadcrumb.Item>
+										<Breadcrumb.Link href={c.url}>{c.title}</Breadcrumb.Link>
+									</Breadcrumb.Item>
+								</div>
+>>>>>>> 729d76fbaa0dd26e28476d22349b26e5223b499f
 							{/each}
 						</Breadcrumb.List>
 					</Breadcrumb.Root>
 				{/snippet}
 			</Breadcrumbs>
 		</div>
+<<<<<<< HEAD
+=======
+
+		<div class="flex items-center gap-2">
+			<DropdownMenu.Root>
+				<DropdownMenu.Trigger
+					class={buttonVariants({ variant: 'ghost', size: 'icon', class: 'h-7 w-7' })}
+				>
+					<Sun
+						classes="flex items-center justify-center rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+					/>
+					<Moon class="absolute scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+					<span class="sr-only">Toggle theme</span>
+				</DropdownMenu.Trigger>
+				<DropdownMenu.Content align="end">
+					<DropdownMenu.Item onclick={() => setMode('light')}>Light</DropdownMenu.Item>
+					<DropdownMenu.Item onclick={() => setMode('dark')}>Dark</DropdownMenu.Item>
+					<DropdownMenu.Item onclick={() => resetMode()}>System</DropdownMenu.Item>
+				</DropdownMenu.Content>
+			</DropdownMenu.Root>
+		</div>
+>>>>>>> 729d76fbaa0dd26e28476d22349b26e5223b499f
 	</div>
 </header>
