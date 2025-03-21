@@ -5,28 +5,28 @@
 	import { Separator } from '$lib/components/ui/separator/index.js';
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 
-	import { page } from '$app/state';
-	import { Breadcrumbs } from 'svelte-breadcrumbs';
+	// import { page } from '$app/state';
+	// import { Breadcrumbs } from 'svelte-breadcrumbs';
 
 	import { resetMode, setMode } from 'mode-watcher';
 
 	import Home from '$lib/animated-icons/home.svelte';
 	import Sun from '$lib/animated-icons/sun.svelte';
-	import Moon from 'lucide-svelte/icons/moon';
+	import Moon from '@lucide/svelte/icons/moon';
 
 	import { AutoAnimate } from '$lib/hooks/auto-animate.svelte';
 	import { fly } from 'svelte/transition';
 </script>
 
 <header
-	class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-in-out group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12"
+	class="mb-3 flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-in-out group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12"
 >
 	<div class="container flex items-center justify-between gap-2">
 		<div class="flex items-center gap-2">
 			<Sidebar.Trigger class="-ml-1" />
 			<Separator orientation="vertical" class="mx-1 h-4" />
 
-			<Breadcrumbs url={page.url} routeId={page.route.id} pageData={page.data} skipRoutesWithNoPage>
+			<!-- <Breadcrumbs url={page.url} routeId={page.route.id} pageData={page.data} skipRoutesWithNoPage>
 				{#snippet children({ crumbs })}
 					<Breadcrumb.Root>
 						<Breadcrumb.List class="relative">
@@ -49,7 +49,7 @@
 						</Breadcrumb.List>
 					</Breadcrumb.Root>
 				{/snippet}
-			</Breadcrumbs>
+			</Breadcrumbs> -->
 		</div>
 
 		<div class="flex items-center gap-2">

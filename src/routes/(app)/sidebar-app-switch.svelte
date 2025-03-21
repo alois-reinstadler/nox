@@ -2,11 +2,11 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
-	import ChevronsUpDown from 'lucide-svelte/icons/chevrons-up-down';
-	import Plus from 'lucide-svelte/icons/plus';
+	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
+	import Plus from '@lucide/svelte/icons/plus';
 
-	import AudioWaveform from 'lucide-svelte/icons/audio-waveform';
-	import GalleryVerticalEnd from 'lucide-svelte/icons/gallery-vertical-end';
+	import AudioWaveform from '@lucide/svelte/icons/audio-waveform';
+	import GalleryVerticalEnd from '@lucide/svelte/icons/gallery-vertical-end';
 
 	import type { Icon } from '$lib/types';
 

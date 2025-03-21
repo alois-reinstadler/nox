@@ -1,10 +1,11 @@
-import { type Icon as IconType } from 'lucide-svelte';
+import { type Icon as IconType } from '@lucide/svelte';
 
 type WithoutKeys<T, K extends keyof T> = {
 	[P in Exclude<keyof T, K>]: T[P];
 };
 
 export type Icon = typeof IconType;
+export type { ClassValue } from 'clsx';
 
 export type Metadata = {
 	title: string;

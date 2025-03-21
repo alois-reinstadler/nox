@@ -1,9 +1,9 @@
-import Settings from 'lucide-svelte/icons/settings-2';
-import Building from 'lucide-svelte/icons/building-2';
-import Truck from 'lucide-svelte/icons/truck';
-import Users from 'lucide-svelte/icons/users-round';
-// import BookOpen from 'lucide-svelte/icons/book-open';
-// import Bot from 'lucide-svelte/icons/bot';
+import Settings from '@lucide/svelte/icons/settings-2';
+import Building from '@lucide/svelte/icons/building-2';
+import Truck from '@lucide/svelte/icons/truck';
+import Users from '@lucide/svelte/icons/users-round';
+// import BookOpen from '@lucide/svelte/icons/book-open';
+// import Bot from '@lucide/svelte/icons/bot';
 
 import type { SidebarNavItem, NavItem, SidebarNavGroup } from '$lib/types';
 
@@ -17,27 +17,26 @@ export const navMain: SidebarNavItem[] = [
 		items: [
 			{
 				title: 'Übersicht',
-				href: '/sales'
+				href: '/vertrieb'
 			},
 			{
 				title: 'Ausschreibungen',
-				href: '/sales/lvs' // leistungsverzeichnis (.onlv)
+				href: '/vertrieb/ausschreibungen' // leistungsverzeichnis (.onlv)
 			},
 			{
 				title: 'Angebote',
-				href: '/sales/quotes'
+				href: '/vertrieb/angebote'
 			},
 			{
 				title: 'Rechnungen',
-				href: '/sales/invoices'
+				href: '/vertrieb/rechnungen'
 			},
 			{
 				title: 'Marketing',
-				href: '/sales/marketing'
+				href: '/vertrieb/marketing'
 			}
 		]
 	},
-
 	{
 		title: 'Personal',
 		href: '#',
@@ -45,42 +44,41 @@ export const navMain: SidebarNavItem[] = [
 		items: [
 			{
 				title: 'Übersicht',
-				href: '/hr'
+				href: '/personal'
 			},
 			{
 				title: 'Lohn und Gehalt',
-				href: '/hr/payroll'
+				href: '/personal/lohn-und-gehalt'
 			},
 			{
 				title: 'Urlaub und Abwesenheit',
-				href: '/hr/absence'
+				href: '/personal/urlaub-und-abwesenheit'
 			},
 			{
 				title: 'Leistungsbewertung',
-				href: '/hr/performance-review'
+				href: '/personal/leistungsbewertung'
 			}
 		]
 	},
-
 	{
 		title: 'Stammdaten',
 		icon: Building,
 		items: [
 			{
 				title: 'Organisation',
-				href: '/organization'
+				href: '/stammdaten/organisation'
 			},
 			{
 				title: 'Personal',
-				href: '/organization/employees'
+				href: '/stammdaten/personal'
 			},
 			{
 				title: 'Kontakte',
-				href: '/organization/contacts' // kunden (customers), lieferanten (suppliers), mitarbeiter (employees), sonstige (other)
+				href: '/stammdaten/kontakte' // kunden (customers), lieferanten (suppliers), mitarbeiter (employees), sonstige (other)
 			},
 			{
 				title: 'Produkte & Services',
-				href: '/organization/products'
+				href: '/stammdaten/produkte'
 			}
 		]
 	},
@@ -90,23 +88,122 @@ export const navMain: SidebarNavItem[] = [
 		items: [
 			{
 				title: 'Profil',
-				href: '/settings#profile'
+				href: '/einstellungen#profil'
 			},
 			{
 				title: 'Abrechnung',
-				href: '/settings#billing'
+				href: '/einstellungen#abrechnung'
 			},
 			{
 				title: 'Benachrichtigungen',
-				href: '/settings#notifications'
+				href: '/einstellungen#benachrichtigungen'
 			},
 			{
 				title: 'Layout und Design',
-				href: '/settings#layout-and-design'
+				href: '/einstellungen#layout-und-design'
 			}
 		]
 	}
 ];
+
+// export const navMain: SidebarNavItem[] = [
+// 	{
+// 		title: 'Vertrieb',
+// 		href: '#',
+// 		icon: Truck,
+// 		items: [
+// 			{
+// 				title: 'Übersicht',
+// 				href: '/sales'
+// 			},
+// 			{
+// 				title: 'Ausschreibungen',
+// 				href: '/sales/lvs' // leistungsverzeichnis (.onlv)
+// 			},
+// 			{
+// 				title: 'Angebote',
+// 				href: '/sales/quotes'
+// 			},
+// 			{
+// 				title: 'Rechnungen',
+// 				href: '/sales/invoices'
+// 			},
+// 			{
+// 				title: 'Marketing',
+// 				href: '/sales/marketing'
+// 			}
+// 		]
+// 	},
+
+// 	{
+// 		title: 'Personal',
+// 		href: '#',
+// 		icon: Users,
+// 		items: [
+// 			{
+// 				title: 'Übersicht',
+// 				href: '/hr'
+// 			},
+// 			{
+// 				title: 'Lohn und Gehalt',
+// 				href: '/hr/payroll'
+// 			},
+// 			{
+// 				title: 'Urlaub und Abwesenheit',
+// 				href: '/hr/absence'
+// 			},
+// 			{
+// 				title: 'Leistungsbewertung',
+// 				href: '/hr/performance-review'
+// 			}
+// 		]
+// 	},
+
+// 	{
+// 		title: 'Stammdaten',
+// 		icon: Building,
+// 		items: [
+// 			{
+// 				title: 'Organisation',
+// 				href: '/organization'
+// 			},
+// 			{
+// 				title: 'Personal',
+// 				href: '/organization/employees'
+// 			},
+// 			{
+// 				title: 'Kontakte',
+// 				href: '/organization/contacts' // kunden (customers), lieferanten (suppliers), mitarbeiter (employees), sonstige (other)
+// 			},
+// 			{
+// 				title: 'Produkte & Services',
+// 				href: '/organization/products'
+// 			}
+// 		]
+// 	},
+// 	{
+// 		title: 'Einstellungen',
+// 		icon: Settings,
+// 		items: [
+// 			{
+// 				title: 'Profil',
+// 				href: '/settings#profile'
+// 			},
+// 			{
+// 				title: 'Abrechnung',
+// 				href: '/settings#billing'
+// 			},
+// 			{
+// 				title: 'Benachrichtigungen',
+// 				href: '/settings#notifications'
+// 			},
+// 			{
+// 				title: 'Layout und Design',
+// 				href: '/settings#layout-and-design'
+// 			}
+// 		]
+// 	}
+// ];
 
 // export const navMain: SidebarNavItem[] = [
 // 	{
