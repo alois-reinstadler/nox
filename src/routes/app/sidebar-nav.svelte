@@ -6,9 +6,9 @@
 	import { AutoAnimate } from '$lib/hooks/auto-animate.svelte';
 	import { cn } from '$lib/utils.js';
 
-	import { navMain } from '$lib/config/navigation';
+	import { employeeNavMain } from '$lib/config/navigation';
 
-	const items = navMain;
+	const items = employeeNavMain;
 </script>
 
 <Sidebar.Group>

@@ -1,11 +1,14 @@
-<script>
+<script lang="ts">
+	import type { AnimatedIconProps } from '$lib/types';
+
 	let {
 		color = 'currentColor',
 		size = 24,
 		strokeWidth = 2,
 		isHovered = false,
-		classes = ''
-	} = $props();
+		class: className,
+		...restProps
+	}: AnimatedIconProps = $props();
 
 	function handleMouseEnter() {
 		isHovered = true;
@@ -16,29 +19,27 @@
 	}
 </script>
 
-<div
-	class={classes}
-	aria-label="clock-7"
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	width={size}
+	height={size}
+	viewBox="0 0 24 24"
+	fill="none"
+	stroke={color}
+	stroke-width={strokeWidth}
+	stroke-linecap="round"
+	stroke-linejoin="round"
+	class={className}
 	role="img"
+	aria-label="clock-7"
 	onmouseenter={handleMouseEnter}
 	onmouseleave={handleMouseLeave}
+	{...restProps}
 >
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width={size}
-		height={size}
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke={color}
-		stroke-width={strokeWidth}
-		stroke-linecap="round"
-		stroke-linejoin="round"
-	>
-		<circle cx="12" cy="12" r="10" />
-		<line x1="12" y1="6" x2="12" y2="12" class="minute-hand" class:animate={isHovered} />
-		<line x1="12" y1="12" x2="9.5" y2="16" class="hour-hand" class:animate={isHovered} />
-	</svg>
-</div>
+	<circle cx="12" cy="12" r="10" />
+	<line x1="12" y1="6" x2="12" y2="12" class="minute-hand" class:animate={isHovered} />
+	<line x1="12" y1="12" x2="9.5" y2="16" class="hour-hand" class:animate={isHovered} />
+</svg>
 
 <style>
 	.minute-hand,

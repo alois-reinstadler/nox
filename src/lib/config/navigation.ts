@@ -1,7 +1,8 @@
 import Settings from '@lucide/svelte/icons/settings-2';
 import Building from '@lucide/svelte/icons/building-2';
-import Truck from '@lucide/svelte/icons/truck';
+import Clock from '@lucide/svelte/icons/clock';
 import Users from '@lucide/svelte/icons/users-round';
+import Receipt from '@lucide/svelte/icons/receipt-text';
 // import BookOpen from '@lucide/svelte/icons/book-open';
 // import Bot from '@lucide/svelte/icons/bot';
 
@@ -9,31 +10,84 @@ import type { SidebarNavItem, NavItem, SidebarNavGroup } from '$lib/types';
 
 export type { SidebarNavItem, NavItem, SidebarNavGroup };
 
-export const navMain: SidebarNavItem[] = [
+export const employeeNavMain: SidebarNavItem[] = [
 	{
-		title: 'Vertrieb',
+		title: 'Zeiterfassung',
 		href: '#',
-		icon: Truck,
+		icon: Clock,
 		items: [
 			{
 				title: 'Übersicht',
-				href: '/vertrieb'
+				href: '/zeiterfassung/zeiterfassung'
 			},
 			{
 				title: 'Ausschreibungen',
-				href: '/vertrieb/ausschreibungen' // leistungsverzeichnis (.onlv)
+				href: '/app/vertrieb/ausschreibungen' // leistungsverzeichnis (.onlv)
 			},
 			{
 				title: 'Angebote',
-				href: '/vertrieb/angebote'
+				href: '/app/vertrieb/angebote'
 			},
 			{
 				title: 'Rechnungen',
-				href: '/vertrieb/rechnungen'
+				href: '/app/vertrieb/rechnungen'
 			},
 			{
 				title: 'Marketing',
-				href: '/vertrieb/marketing'
+				href: '/app/vertrieb/marketing'
+			}
+		]
+	}
+
+	// {
+	// 	title: 'Einstellungen',
+	// 	icon: Settings,
+	// 	items: [
+	// 		{
+	// 			title: 'Profil',
+	// 			href: '/app/einstellungen#profil'
+	// 		},
+	// 		{
+	// 			title: 'Abrechnung',
+	// 			href: '/app/einstellungen#abrechnung'
+	// 		},
+	// 		{
+	// 			title: 'Benachrichtigungen',
+	// 			href: '/app/einstellungen#benachrichtigungen'
+	// 		},
+	// 		{
+	// 			title: 'Layout und Design',
+	// 			href: '/app/einstellungen#layout-und-design'
+	// 		}
+	// 	]
+	// }
+];
+
+export const adminNav: SidebarNavItem[] = [
+	{
+		title: 'Vertrieb',
+		href: '#',
+		icon: Receipt,
+		items: [
+			{
+				title: 'Übersicht',
+				href: '/app/vertrieb'
+			},
+			{
+				title: 'Ausschreibungen',
+				href: '/app/vertrieb/ausschreibungen' // leistungsverzeichnis (.onlv)
+			},
+			{
+				title: 'Angebote',
+				href: '/app/vertrieb/angebote'
+			},
+			{
+				title: 'Rechnungen',
+				href: '/app/vertrieb/rechnungen'
+			},
+			{
+				title: 'Marketing',
+				href: '/app/vertrieb/marketing'
 			}
 		]
 	},
@@ -44,19 +98,19 @@ export const navMain: SidebarNavItem[] = [
 		items: [
 			{
 				title: 'Übersicht',
-				href: '/personal'
+				href: '/app/personal'
 			},
 			{
 				title: 'Lohn und Gehalt',
-				href: '/personal/lohn-und-gehalt'
+				href: '/app/personal/lohn-und-gehalt'
 			},
 			{
 				title: 'Urlaub und Abwesenheit',
-				href: '/personal/urlaub-und-abwesenheit'
+				href: '/app/personal/urlaub-und-abwesenheit'
 			},
 			{
 				title: 'Leistungsbewertung',
-				href: '/personal/leistungsbewertung'
+				href: '/app/personal/leistungsbewertung'
 			}
 		]
 	},
@@ -66,19 +120,19 @@ export const navMain: SidebarNavItem[] = [
 		items: [
 			{
 				title: 'Organisation',
-				href: '/stammdaten/organisation'
+				href: '/app/stammdaten/organisation'
 			},
 			{
 				title: 'Personal',
-				href: '/stammdaten/personal'
+				href: '/app/stammdaten/personal'
 			},
 			{
 				title: 'Kontakte',
-				href: '/stammdaten/kontakte' // kunden (customers), lieferanten (suppliers), mitarbeiter (employees), sonstige (other)
+				href: '/app/stammdaten/kontakte' // kunden (customers), lieferanten (suppliers), mitarbeiter (employees), sonstige (other)
 			},
 			{
 				title: 'Produkte & Services',
-				href: '/stammdaten/produkte'
+				href: '/app/stammdaten/produkte'
 			}
 		]
 	},
@@ -88,19 +142,19 @@ export const navMain: SidebarNavItem[] = [
 		items: [
 			{
 				title: 'Profil',
-				href: '/einstellungen#profil'
+				href: '/app/einstellungen/profil'
 			},
 			{
 				title: 'Abrechnung',
-				href: '/einstellungen#abrechnung'
+				href: '/app/einstellungen/abrechnung'
 			},
 			{
 				title: 'Benachrichtigungen',
-				href: '/einstellungen#benachrichtigungen'
+				href: '/app/einstellungen/benachrichtigungen'
 			},
 			{
 				title: 'Layout und Design',
-				href: '/einstellungen#layout-und-design'
+				href: '/app/einstellungen/layout-und-design'
 			}
 		]
 	}
@@ -114,23 +168,23 @@ export const navMain: SidebarNavItem[] = [
 // 		items: [
 // 			{
 // 				title: 'Übersicht',
-// 				href: '/sales'
+// 				href: '/app/sales'
 // 			},
 // 			{
 // 				title: 'Ausschreibungen',
-// 				href: '/sales/lvs' // leistungsverzeichnis (.onlv)
+// 				href: '/app/sales/lvs' // leistungsverzeichnis (.onlv)
 // 			},
 // 			{
 // 				title: 'Angebote',
-// 				href: '/sales/quotes'
+// 				href: '/app/sales/quotes'
 // 			},
 // 			{
 // 				title: 'Rechnungen',
-// 				href: '/sales/invoices'
+// 				href: '/app/sales/invoices'
 // 			},
 // 			{
 // 				title: 'Marketing',
-// 				href: '/sales/marketing'
+// 				href: '/app/sales/marketing'
 // 			}
 // 		]
 // 	},
@@ -142,19 +196,19 @@ export const navMain: SidebarNavItem[] = [
 // 		items: [
 // 			{
 // 				title: 'Übersicht',
-// 				href: '/hr'
+// 				href: '/app/hr'
 // 			},
 // 			{
 // 				title: 'Lohn und Gehalt',
-// 				href: '/hr/payroll'
+// 				href: '/app/hr/payroll'
 // 			},
 // 			{
 // 				title: 'Urlaub und Abwesenheit',
-// 				href: '/hr/absence'
+// 				href: '/app/hr/absence'
 // 			},
 // 			{
 // 				title: 'Leistungsbewertung',
-// 				href: '/hr/performance-review'
+// 				href: '/app/hr/performance-review'
 // 			}
 // 		]
 // 	},
@@ -165,19 +219,19 @@ export const navMain: SidebarNavItem[] = [
 // 		items: [
 // 			{
 // 				title: 'Organisation',
-// 				href: '/organization'
+// 				href: '/app/organization'
 // 			},
 // 			{
 // 				title: 'Personal',
-// 				href: '/organization/employees'
+// 				href: '/app/organization/employees'
 // 			},
 // 			{
 // 				title: 'Kontakte',
-// 				href: '/organization/contacts' // kunden (customers), lieferanten (suppliers), mitarbeiter (employees), sonstige (other)
+// 				href: '/app/organization/contacts' // kunden (customers), lieferanten (suppliers), mitarbeiter (employees), sonstige (other)
 // 			},
 // 			{
 // 				title: 'Produkte & Services',
-// 				href: '/organization/products'
+// 				href: '/app/organization/products'
 // 			}
 // 		]
 // 	},
@@ -187,19 +241,19 @@ export const navMain: SidebarNavItem[] = [
 // 		items: [
 // 			{
 // 				title: 'Profil',
-// 				href: '/settings#profile'
+// 				href: '/app/settings#profile'
 // 			},
 // 			{
 // 				title: 'Abrechnung',
-// 				href: '/settings#billing'
+// 				href: '/app/settings#billing'
 // 			},
 // 			{
 // 				title: 'Benachrichtigungen',
-// 				href: '/settings#notifications'
+// 				href: '/app/settings#notifications'
 // 			},
 // 			{
 // 				title: 'Layout und Design',
-// 				href: '/settings#layout-and-design'
+// 				href: '/app/settings#layout-and-design'
 // 			}
 // 		]
 // 	}
@@ -236,23 +290,23 @@ export const navMain: SidebarNavItem[] = [
 // 		items: [
 // 			{
 // 				title: 'Übersicht',
-// 				href: '/sales'
+// 				href: '/app/sales'
 // 			},
 // 			{
 // 				title: 'Leistungsverzeichnisse',
-// 				href: '/sales/lvs' // leistungsverzeichnis (.onlv)
+// 				href: '/app/sales/lvs' // leistungsverzeichnis (.onlv)
 // 			},
 // 			{
 // 				title: 'Angebote',
-// 				href: '/sales/quotes'
+// 				href: '/app/sales/quotes'
 // 			},
 // 			{
 // 				title: 'Rechnungen',
-// 				href: '/sales/invoices'
+// 				href: '/app/sales/invoices'
 // 			},
 // 			{
 // 				title: 'Marketing',
-// 				href: '/sales/marketing'
+// 				href: '/app/sales/marketing'
 // 			}
 // 		]
 // 	},
@@ -282,19 +336,19 @@ export const navMain: SidebarNavItem[] = [
 // 		items: [
 // 			{
 // 				title: 'Übersicht',
-// 				href: '/hr'
+// 				href: '/app/hr'
 // 			},
 // 			{
 // 				title: 'Lohn und Gehalt',
-// 				href: '/hr/payroll'
+// 				href: '/app/hr/payroll'
 // 			},
 // 			{
 // 				title: 'Urlaub und Abwesenheit',
-// 				href: '/hr/absence'
+// 				href: '/app/hr/absence'
 // 			},
 // 			{
 // 				title: 'Leistungsbewertung',
-// 				href: '/hr/performance-review'
+// 				href: '/app/hr/performance-review'
 // 			}
 // 		]
 // 	},
@@ -346,19 +400,19 @@ export const navMain: SidebarNavItem[] = [
 // 		items: [
 // 			{
 // 				title: 'Organisation',
-// 				href: '/organization'
+// 				href: '/app/organization'
 // 			},
 // 			{
 // 				title: 'Personal',
-// 				href: '/organization/employees'
+// 				href: '/app/organization/employees'
 // 			},
 // 			{
 // 				title: 'Kontakte',
-// 				href: '/organization/contacts' // kunden (customers), lieferanten (suppliers), mitarbeiter (employees), sonstige (other)
+// 				href: '/app/organization/contacts' // kunden (customers), lieferanten (suppliers), mitarbeiter (employees), sonstige (other)
 // 			},
 // 			{
 // 				title: 'Produkte & Services',
-// 				href: '/organization/products'
+// 				href: '/app/organization/products'
 // 			}
 // 		]
 // 	},
@@ -368,19 +422,19 @@ export const navMain: SidebarNavItem[] = [
 // 		items: [
 // 			{
 // 				title: 'Profil',
-// 				href: '/settings#profile'
+// 				href: '/app/settings#profile'
 // 			},
 // 			{
 // 				title: 'Abrechnung',
-// 				href: '/settings#billing'
+// 				href: '/app/settings#billing'
 // 			},
 // 			{
 // 				title: 'Benachrichtigungen',
-// 				href: '/settings#notifications'
+// 				href: '/app/settings#notifications'
 // 			},
 // 			{
 // 				title: 'Layout und Design',
-// 				href: '/settings#layout-and-design'
+// 				href: '/app/settings#layout-and-design'
 // 			}
 // 		]
 // 	}

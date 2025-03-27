@@ -2,10 +2,8 @@
 	import { IsMobile } from '$lib/hooks/is-mobile.svelte';
 	import Authentication from '$lib/img/authentication.avif';
 
-	import type { Snippet } from 'svelte';
-
 	const isMobile = new IsMobile();
-	let { children }: Record<'children', Snippet> = $props();
+	let { children } = $props();
 </script>
 
 <div class="background-overlay absolute inset-0 -z-50 h-full w-full"></div>
