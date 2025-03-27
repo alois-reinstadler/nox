@@ -18,23 +18,15 @@ export const employeeNavMain: SidebarNavItem[] = [
 		items: [
 			{
 				title: 'Übersicht',
-				href: '/zeiterfassung/zeiterfassung'
+				href: '/app/ze'
 			},
 			{
-				title: 'Ausschreibungen',
-				href: '/app/vertrieb/ausschreibungen' // leistungsverzeichnis (.onlv)
+				title: 'Stundenbericht',
+				href: '/app/ze/stundenbericht'
 			},
 			{
-				title: 'Angebote',
-				href: '/app/vertrieb/angebote'
-			},
-			{
-				title: 'Rechnungen',
-				href: '/app/vertrieb/rechnungen'
-			},
-			{
-				title: 'Marketing',
-				href: '/app/vertrieb/marketing'
+				title: 'Ein- und Ausstemplen',
+				href: '/app/ze/stempeln'
 			}
 		]
 	}
