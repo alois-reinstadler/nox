@@ -5,7 +5,9 @@
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { Label } from '$lib/components/ui/label/index.js';
 	import { Textarea } from '$lib/components/ui/textarea/index.js';
-
+	import type { WithElementRef } from 'bits-ui';
+	import type { HTMLAttributes } from 'svelte/elements';
+	import { cn } from '$lib/utils.js';
 	const areas = [
 		{
 			value: 'team',
@@ -50,9 +52,16 @@
 
 	let areaValue = $state(areas[1].value);
 	let securityValue = $state(securityLevels[1].value);
+
+	let {
+		ref = $bindable(null),
+		class: className,
+		children,
+		...restProps
+	}: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
 </script>
 
-<Card.Root class="max-w-md">
+<Card.Root class={cn('max-w-sm', className)} bind:ref>
 	<Card.Header>
 		<Card.Title>Report an issue</Card.Title>
 		<Card.Description>What area are you having problems with?</Card.Description>

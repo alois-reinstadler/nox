@@ -12,16 +12,27 @@
 
 	import Home from '$lib/animated-icons/home.svelte';
 	import Sun from '$lib/animated-icons/sun.svelte';
+
 	import Moon from '@lucide/svelte/icons/moon';
+	import Palette from '@lucide/svelte/icons/palette';
 
 	import { AutoAnimate } from '$lib/hooks/auto-animate.svelte';
 	import { fly } from 'svelte/transition';
+
+	import { themes, type ThemeName } from '$lib/config/theme';
+	import { UseTheme } from '$lib/hooks/use-theme.svelte';
+
+	const theme = new UseTheme();
+
+	function setTheme(name: ThemeName) {
+		theme.current.name = name;
+	}
 </script>
 
 <header
 	class="mb-3 flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-in-out group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12"
 >
-	<div class="container-app flex items-center justify-between gap-2">
+	<div class="container flex items-center justify-between gap-2">
 		<div class="flex items-center gap-2">
 			<Sidebar.Trigger class="-ml-1" />
 			<Separator orientation="vertical" class="mx-1 h-4" />
@@ -73,16 +84,13 @@
 				<DropdownMenu.Trigger
 					class={buttonVariants({ variant: 'ghost', size: 'icon', class: 'h-7 w-7' })}
 				>
-					<Sun
-						classes="flex items-center justify-center rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
-					/>
-					<Moon class="absolute scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+					<Palette class="flex items-center justify-center" />
 					<span class="sr-only">Switch theme</span>
 				</DropdownMenu.Trigger>
 				<DropdownMenu.Content align="end">
-					<DropdownMenu.Item onclick={() => setMode('light')}>Light</DropdownMenu.Item>
-					<DropdownMenu.Item onclick={() => setMode('dark')}>Dark</DropdownMenu.Item>
-					<DropdownMenu.Item onclick={() => resetMode()}>System</DropdownMenu.Item>
+					{#each themes as theme (theme)}
+						<DropdownMenu.Item onclick={() => setTheme(theme)}>{theme}</DropdownMenu.Item>
+					{/each}
 				</DropdownMenu.Content>
 			</DropdownMenu.Root>
 		</div>

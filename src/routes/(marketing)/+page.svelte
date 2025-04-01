@@ -1,267 +1,162 @@
-<script>
-	import Button from '$lib/components/ui/button/button.svelte';
-	import { ChevronRight } from '@lucide/svelte';
-	import ProgressiveBlur from '$lib/components/ext/progressive-blur/progressive-blur.svelte';
-	import Marquee from '$lib/components/ext/marquee/marquee.svelte';
+<script lang="ts">
+	import PoweredBy from './powered-by.svelte';
 
-	// You can store Hero Header Component in seperate file
-	// I have used snippet for better readability
+	import WorkInProgress from '$lib/components/pages/work-in-progress.svelte';
+	import { Button } from '$lib/components/ui/button';
 
-	// Hero Header Component
-	import Logo from '$lib/components/ext/logo/logo.svelte';
-	import { cn } from '$lib/utils';
-	import { Menu, X } from '@lucide/svelte';
-	import { scrollY } from 'svelte/reactivity/window';
+	import * as Card from '$lib/components/ui/card/index.js';
+	import CardDecorator from './card-decorator.svelte';
 
-	let menuItems = [
-		{ name: 'Features', href: '#a' },
-		{ name: 'Solution', href: '#a' },
-		{ name: 'Pricing', href: '#a' },
-		{ name: 'About', href: '#a' }
-	];
-	let menuState = $state(false);
-	let isScrolled = $derived.by(() => {
-		if (scrollY.current !== undefined && scrollY.current > 50) {
-			return true;
+	import Sparkles from '@lucide/svelte/icons/sparkles';
+	import ReportIssue from '$lib/components/report-issue.svelte';
+	const contactFields = [
+		{
+			label: 'Anfragen',
+			email: 'info@nox-spenglerei.at',
+			phone: '+43 123 456 789'
+		},
+		{
+			label: 'Büro',
+			email: 'office@nox-spenglerei.at'
 		}
-		return false;
-	});
+	] satisfies ContactField[];
+
+	type ContactField = {
+		label: string;
+		email: string;
+		phone?: string;
+	};
 </script>
 
-<!-- Scroll below to see the snippet code  -->
-{@render heroHeader()}
-
-<main class="ui-marketing overflow-x-hidden">
-	<section>
+<section class="flex h-dvh w-full flex-col overflow-hidden">
+	<div class="relative flex flex-1 flex-col items-center justify-center">
 		<div
-			class="overflow-hidden rounded-3xl py-24 md:pb-32 lg:rounded-[3rem] lg:pt-72 lg:pb-36 dark:border-white/5"
+			class="rounded-9xl md:rounded-t-9xl absolute inset-0 isolate -z-10 container h-full w-full overflow-hidden rounded-t-none rounded-b border md:mt-20"
 		>
-			<div class="relative mx-auto flex max-w-7xl flex-col px-6 lg:block lg:px-12">
-				<div class="mx-auto max-w-lg text-center lg:ml-0 lg:max-w-full lg:text-left">
-					<h1 class="mt-8 max-w-2xl text-5xl text-balance md:text-6xl lg:mt-16 xl:text-7xl">
-						Build 10x Faster with NS
-					</h1>
-					<p class="mt-8 max-w-2xl text-lg text-balance">
-						Highly customizable components for building modern websites and applications you mean
-						it.
-					</p>
+			<video autoplay loop class="-z-10 h-full w-full object-cover">
+				<source src="/hero.mp4?hls" type="video/mp4" />
+			</video>
+		</div>
+		<div class="absolute inset-0 -z-10">
+			<div class="from-background/0 to-background/100 absolute inset-0 bg-gradient-to-b to-98%" />
+		</div>
+		<div class="mx-auto max-w-5xl px-6">
+			<div class="sm:mx-auto lg:mt-0 lg:mr-auto">
+				<h1 class="max-w-2xl text-5xl font-medium text-balance md:text-6xl">
+					Build and Ship 10x faster with NS
+				</h1>
+				<p class="mt-8 max-w-2xl text-lg text-pretty">
+					Tailwindcss highly customizable components for building modern websites and applications
+					that look and feel the way you mean it.
+				</p>
 
+				<div class="mt-12 flex items-center gap-2">
 					<div
-						class="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start"
+						class="bg-foreground/10 border p-0.5"
+						style="border-radius: calc(var(--radius) + 4px + 0.125rem);"
 					>
-						<Button size="lg" href="#" class="h-12 rounded-full pr-3 pl-5 text-base">
-							<span class="text-nowrap">Start Building</span>
-							<ChevronRight class="ml-1" />
-						</Button>
-						<Button
-							size="lg"
-							variant="ghost"
-							class="h-12 rounded-full px-5 text-base hover:bg-zinc-950/5 dark:hover:bg-white/5"
-						>
-							<a href="#link">
-								<span class="text-nowrap">Request a demo</span>
+						<Button size="lg" class="rounded-xl px-5 text-base">
+							<a href="#a">
+								<span class="text-nowrap">Start Building</span>
 							</a>
 						</Button>
 					</div>
-				</div>
-			</div>
-			<div
-				class="absolute inset-1 isolate -z-10 aspect-2/3 overflow-hidden rounded-3xl border border-black/10 lg:aspect-video lg:rounded-[3rem] dark:border-white/5"
-			>
-				<video
-					autoPlay={true}
-					loop={true}
-					class="size-full -scale-x-100 object-cover opacity-50 invert dark:opacity-35 dark:invert-0 dark:lg:opacity-75"
-					src="https://res.cloudinary.com/dg4jhba5c/video/upload/v1741605033/dna_ttplyu.mp4"
-				></video>
-			</div>
-		</div>
-	</section>
-	<section class="bg-background pb-2">
-		<div class="group relative m-auto max-w-7xl px-6">
-			<div class="flex flex-col items-center md:flex-row">
-				<div class="md:max-w-44 md:border-r md:pr-6">
-					<p class="text-end text-sm">Powering the best teams</p>
-				</div>
-				<!-- Checkout Logo Cloud Three  -->
-				<!-- I have provided progresive blur snippet code & Marquee code -->
-				<div class="relative py-6 md:w-[calc(100%-11rem)]">
-					<Marquee>
-						<div class="flex">
-							<img
-								class="mx-auto h-5 w-fit dark:invert"
-								src="https://html.tailus.io/blocks/customers/nvidia.svg"
-								alt="Nvidia Logo"
-								height="20"
-								width="auto"
-							/>
-						</div>
-						<div class="flex">
-							<img
-								class="mx-auto h-4 w-fit dark:invert"
-								src="https://html.tailus.io/blocks/customers/column.svg"
-								alt="Column Logo"
-								height="16"
-								width="auto"
-							/>
-						</div>
-						<div class="flex">
-							<img
-								class="mx-auto h-4 w-fit dark:invert"
-								src="https://html.tailus.io/blocks/customers/github.svg"
-								alt="GitHub Logo"
-								height="16"
-								width="auto"
-							/>
-						</div>
-						<div class="flex">
-							<img
-								class="mx-auto h-5 w-fit dark:invert"
-								src="https://html.tailus.io/blocks/customers/nike.svg"
-								alt="Nike Logo"
-								height="20"
-								width="auto"
-							/>
-						</div>
-						<div class="flex">
-							<img
-								class="mx-auto h-5 w-fit dark:invert"
-								src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
-								alt="Lemon Squeezy Logo"
-								height="20"
-								width="auto"
-							/>
-						</div>
-						<div class="flex">
-							<img
-								class="mx-auto h-4 w-fit dark:invert"
-								src="https://html.tailus.io/blocks/customers/laravel.svg"
-								alt="Laravel Logo"
-								height="16"
-								width="auto"
-							/>
-						</div>
-						<div class="flex">
-							<img
-								class="mx-auto h-7 w-fit dark:invert"
-								src="https://html.tailus.io/blocks/customers/lilly.svg"
-								alt="Lilly Logo"
-								height="28"
-								width="auto"
-							/>
-						</div>
-						<div class="flex">
-							<img
-								class="mx-auto h-6 w-fit dark:invert"
-								src="https://html.tailus.io/blocks/customers/openai.svg"
-								alt="OpenAI Logo"
-								height="24"
-								width="auto"
-							/>
-						</div>
-					</Marquee>
-
-					<div class="from-background absolute inset-y-0 left-0 w-20 bg-linear-to-r"></div>
-					<div class="from-background absolute inset-y-0 right-0 w-20 bg-linear-to-l"></div>
-					<ProgressiveBlur
-						class="pointer-events-none absolute top-0 left-0 z-50 h-full w-20"
-						direction="left"
-						blurIntensity={1}
-					/>
-					<ProgressiveBlur
-						class="pointer-events-none absolute top-0 right-0 z-50 h-full w-20"
-						direction="right"
-						blurIntensity={1}
-					/>
-				</div>
-			</div>
-		</div>
-	</section>
-</main>
-
-{#snippet heroHeader()}
-	<header>
-		<nav class="fixed z-20 w-full px-2">
-			<div
-				class={[
-					'mx-auto max-w-7xl rounded-3xl px-6 transition-all duration-300 lg:px-12',
-					isScrolled && 'bg-background/50 backdrop-blur-2xl'
-				]}
-			>
-				<div
-					class={[
-						'relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4',
-						isScrolled && 'lg:py-4'
-					]}
-				>
-					<div class="flex w-full items-center justify-between gap-12 lg:w-auto">
-						<a href="/" aria-label="home" class="flex items-center space-x-2">
-							<Logo />
+					<Button size="lg" variant="ghost" class="h-10.5 rounded-xl px-5 text-base">
+						<a href="#a">
+							<span class="text-nowrap">Request a demo</span>
 						</a>
-
-						<button
-							onclick={() => (menuState = !menuState)}
-							aria-label={menuState == true ? 'Close Menu' : 'Open Menu'}
-							class="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
-						>
-							<Menu
-								class={['m-auto size-6 duration-200', menuState && 'scale-0 rotate-180 opacity-0']}
-							/>
-							<X
-								class={[
-									'absolute inset-0 m-auto size-6 scale-0 -rotate-180 opacity-0 duration-200',
-									menuState && 'scale-100 rotate-0 opacity-100'
-								]}
-							/>
-						</button>
-					</div>
-
-					<div class="absolute inset-0 m-auto hidden size-fit lg:block">
-						<ul class="flex gap-8 text-sm">
-							{#each menuItems as item, index}
-								<li>
-									<a
-										href={item.href}
-										class="text-muted-foreground hover:text-accent-foreground block duration-150"
-									>
-										<span>{item.name}</span>
-									</a>
-								</li>
-							{/each}
-						</ul>
-					</div>
-					<div
-						class={[
-							'bg-background mb-6  w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent',
-							menuState ? 'block lg:flex' : 'hidden lg:flex'
-						]}
-					>
-						<div class="lg:hidden">
-							<ul class="space-y-6 text-base">
-								{#each menuItems as item, index}
-									<li>
-										<a
-											href={item.href}
-											class="text-muted-foreground hover:text-accent-foreground block duration-150"
-										>
-											<span>{item.name}</span>
-										</a>
-									</li>
-								{/each}
-							</ul>
-						</div>
-						<div class="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
-							<Button variant="outline" size="sm" class={cn(isScrolled && 'lg:hidden')} href="#">
-								Login
-							</Button>
-							<Button href="#" size="sm" class={cn(isScrolled && 'lg:hidden')}>Sign Up</Button>
-							<Button size="sm" href="#" class={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
-								Get Strated
-							</Button>
-						</div>
-					</div>
+					</Button>
 				</div>
 			</div>
-		</nav>
-	</header>
+		</div>
+	</div>
+	<div class="container">
+		<PoweredBy />
+	</div>
+</section>
+
+<section class="py-16 md:py-32">
+	<div class="@container mx-auto max-w-5xl px-6">
+		<div class="text-center">
+			<h2 class="text-4xl font-semibold text-balance lg:text-5xl">Built to cover your needs</h2>
+			<p class="mt-4">
+				Libero sapiente aliquam quibusdam aspernatur, praesentium iusto repellendus.
+			</p>
+		</div>
+		<div
+			class="mx-auto mt-8 grid max-w-sm gap-6 *:text-center md:mt-16 @min-4xl:max-w-full @min-4xl:grid-cols-3"
+		>
+			{#each [{ header: 'Powered By AI', content: 'Elements to functionality, you have complete control to create a unique experience.' }, { header: 'Powered By AI', content: 'Elements to functionality, you have complete control to create a unique experience.' }, { header: 'Powered By AI', content: 'Elements to functionality, you have complete control to create a unique experience.' }] as $card}
+				{@render card($card.header, $card.content)}
+			{/each}
+		</div>
+	</div>
+</section>
+
+<section class="py-16 md:py-32">
+	<div class="@container mx-auto max-w-5xl px-6">
+		<div class="text-center">
+			<h2 class="text-4xl font-semibold text-balance lg:text-5xl">Built to cover your needs</h2>
+			<p class="mt-4">
+				Libero sapiente aliquam quibusdam aspernatur, praesentium iusto repellendus.
+			</p>
+		</div>
+		<div class="mt-12 flex w-full flex-col gap-x-6 gap-y-6 md:flex-row">
+			<div class="flex-1">
+				<div class="rounded-4xl border p-6 px-8">
+					<h2 class="text-lg font-semibold">Collaborate</h2>
+					<a
+						href="mailto:hello@tailus.io"
+						class="text-lg text-blue-600 hover:underline dark:text-blue-400"
+					>
+						hello@tailus.io
+					</a>
+					<p class="mt-3 text-sm">+243 000 000 000</p>
+				</div>
+			</div>
+			<div class="flex-1">
+				<div class="rounded-4xl border p-6 px-8">
+					<h3 class="text-lg font-semibold">Press</h3>
+					<a
+						href="mailto:press@tailus.io"
+						class="text-lg text-blue-600 hover:underline dark:text-blue-400"
+					>
+						press@tailus.io
+					</a>
+					<p class="mt-3 text-sm">+243 000 000 000</p>
+				</div>
+			</div>
+		</div>
+		<div class="mt-4">
+			<div class="rounded-4xl border p-6 px-8">
+				<ReportIssue class="w-full max-w-full" />
+			</div>
+		</div>
+	</div>
+</section>
+
+{#snippet card(header: string, content: string)}
+	<Card.Root class="bg-background">
+		<Card.Header class="pb-3">
+			<CardDecorator>
+				<Sparkles class="size-6 rounded-full" aria-hidden />
+			</CardDecorator>
+
+			<h3 class="mt-6 font-medium">{header}</h3>
+		</Card.Header>
+
+		<Card.Content>
+			<p class="mt-3 text-sm">{content}</p>
+		</Card.Content>
+	</Card.Root>
 {/snippet}
+
+<WorkInProgress />
+<WorkInProgress />
+<WorkInProgress />
+<WorkInProgress />
+<WorkInProgress />
+<WorkInProgress />
+<WorkInProgress />
+<WorkInProgress />
+<WorkInProgress />

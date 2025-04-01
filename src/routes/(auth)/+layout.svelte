@@ -1,46 +1,94 @@
 <script lang="ts">
-	import { IsMobile } from '$lib/hooks/is-mobile.svelte';
-	import Authentication from '$lib/img/authentication.avif';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
+	import Background from '$lib/components/backgorund.svelte';
 
-	const isMobile = new IsMobile();
+	import { buttonVariants } from '$lib/components/ui/button/index.js';
+	import CircleHelp from '@lucide/svelte/icons/circle-help';
+	import { page } from '$app/state';
+
+	const dropdownTriggerClass = buttonVariants({ variant: 'outline' });
+
+	let authCTA = $derived.by(() => {
+		switch (page.url.pathname) {
+			case '/login':
+				return {
+					phrase: "Don't have an account?",
+					label: 'Register',
+					href: '/register'
+				};
+			case '/logout':
+				return {
+					phrase: 'Forgot something?',
+					label: 'Login',
+					href: '/login'
+				};
+			case '/register':
+				return {
+					phrase: 'Already have an account?',
+					label: 'Login',
+					href: '/login'
+				};
+			default:
+				return null;
+		}
+	});
+
 	let { children } = $props();
 </script>
 
-<div class="background-overlay absolute inset-0 -z-50 h-full w-full"></div>
+<Background />
 
-<div
-	class="dark relative container grid h-dvh flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0"
->
-	<div
-		class="relative hidden h-full flex-col items-center justify-center overflow-hidden p-10 lg:flex dark:border-r"
-	>
-		<header class="relative z-20 flex items-center text-lg font-medium">NOX</header>
-		{#if !isMobile.current}
-			<img
-				src={Authentication}
-				alt="Authentication"
-				class="absolute inset-0 min-h-full min-w-full"
-				loading="lazy"
-			/>
-			<div
-				class="absolute bottom-0 left-0 z-10 h-1/2 w-full bg-gradient-to-b from-black/0 to-black to-60% opacity-90"
-			></div>
-		{/if}
-		<div class="relative z-20 mt-auto">
-			<blockquote class="space-y-2">
-				<p class="text-lg">
-					&ldquo;This library has saved me countless hours of work and helped me deliver stunning
-					designs to my clients faster than ever before. Highly recommended!&rdquo;
-				</p>
-				<footer class="text-muted-foreground text-sm">Sofia Davis</footer>
-			</blockquote>
-		</div>
+<div class="ui-marketing flex h-dvh w-full flex-col py-4 md:py-0">
+	<div class="md:border-b">
+		<header class="container">
+			<div class="flex items-center justify-between gap-4">
+				<h1 class="font-display text-3xl font-black md:py-1">
+					<span class="text-yellow-300">NOX</span>
+					<span>DEV</span>
+				</h1>
+
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger class={dropdownTriggerClass}
+						>Help <CircleHelp class="h-4 w-4" /></DropdownMenu.Trigger
+					>
+					<DropdownMenu.Content class="min-w-48" align="end">
+						{#if authCTA}
+							<DropdownMenu.Item>
+								<a class="w-full" href={authCTA.href}>
+									{authCTA.label}
+								</a>
+							</DropdownMenu.Item>
+							<DropdownMenu.Separator />
+						{/if}
+						<DropdownMenu.Item class="pr-6">Verify Email</DropdownMenu.Item>
+						<DropdownMenu.Item class="pr-6">Reset Password</DropdownMenu.Item>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</div>
+		</header>
 	</div>
-	<div class="lg:p-8">
+	<div class="relative container mx-auto flex flex-1 flex-col items-center justify-center">
 		{@render children()}
 	</div>
-</div>
+	<div class="md:border-t">
+		<footer class="container">
+			<div class="text-muted-foreground flex items-center justify-between gap-4 text-sm md:py-2">
+				<p>
+					&copy; 2025 <a
+						href="https://alrein.dev"
+						class="hover:text-primary underline underline-offset-4">alrein.dev</a
+					>
+				</p>
 
-<!-- <div
-	class="bg-background absolute top-0 z-[-2] h-screen w-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,var(--sidebar-primary),rgba(255,255,255,0))]"
-></div> -->
+				{#if authCTA}
+					<p>
+						{authCTA.phrase}
+						<a href={authCTA.href} class="hover:text-primary underline underline-offset-4">
+							{authCTA.label}
+						</a>
+					</p>
+				{/if}
+			</div>
+		</footer>
+	</div>
+</div>

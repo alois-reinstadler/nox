@@ -14,16 +14,16 @@
 	}
 </script>
 
-<Button
+<!-- <Button
 	href="/register"
 	variant="ghost"
 	class="font-display absolute top-4 right-4 md:top-8 md:right-8"
 >
 	Register
-</Button>
+</Button> -->
 
-<div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-	<div class="flex flex-col space-y-2 text-center">
+<div class="mx-auto flex w-full flex-col justify-center gap-6 sm:w-[350px]">
+	<div class="flex flex-col gap-2 text-center">
 		<h1 class="text-2xl font-semibold tracking-tight">Login to your account</h1>
 		<p class="text-muted-foreground text-sm">
 			Enter your email and password to login to your account
@@ -76,9 +76,10 @@
 	</div>
 	<p class="text-muted-foreground px-8 text-center text-sm">
 		By clicking continue, you agree to our
-		<a href="/terms" class="hover:text-primary underline underline-offset-4">Terms of Service</a>
-		and
-		<a href="/privacy" class="hover:text-primary underline underline-offset-4">Privacy Policy</a>
-		.
+		<span class="whitespace-nowrap">
+			<a href="/terms" class="hover:text-primary underline underline-offset-4">Terms of Service</a>
+			and
+			<a href="/privacy" class="hover:text-primary underline underline-offset-4">Privacy Policy</a>.
+		</span>
 	</p>
 </div>

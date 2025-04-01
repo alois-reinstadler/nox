@@ -41,7 +41,7 @@
 	];
 </script>
 
-<section class="container-app mx-auto flex flex-col gap-4">
+<section class="container mx-auto flex flex-col gap-4">
 	<div class="flex flex-col gap-2">
 		<h2 class="text-3xl leading-tight font-bold tracking-tight">Personal Übersicht</h2>
 		<p class="text-muted-foreground">

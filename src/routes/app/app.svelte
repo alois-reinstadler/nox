@@ -9,7 +9,7 @@
 	let { children } = $props();
 </script>
 
-<Sidebar.Provider>
+<Sidebar.Provider class="ui-app">
 	<AppSidebar />
 	<Sidebar.Inset>
 		<AppHeader />
