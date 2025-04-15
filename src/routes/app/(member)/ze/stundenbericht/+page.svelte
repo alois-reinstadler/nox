@@ -280,7 +280,7 @@
 		</div>
 		<Button onclick={addReportEntry}>Speichern</Button>
 	</div>
-	<Card.Root class="flex flex-1 items-center justify-start">
+	<Card.Root class="surface-glass surface-blur flex flex-1 items-center justify-start">
 		{#if reportEntries.length > 0}
 			<Card.Content class="w-full">
 				<Accordion.Root type="multiple" class="w-full sm:max-w-[70%]">

@@ -77,51 +77,56 @@
 
 <div class="container" bind:this={containerRef}></div>
 
-<section class="flex h-dvh w-full flex-col overflow-hidden">
-	<div class="relative isolate flex h-dvh w-full flex-col items-center justify-center">
-		<video autoplay loop class="absolute inset-0 -z-40 h-full w-full object-cover">
-			<source src="/hero.mp4?hls" type="video/mp4" />
-		</video>
-		<div class="absolute inset-0 -z-30 flex h-full w-full flex-col">
-			<div class="from-background/0 to-background/100 flex-1 bg-linear-180" />
-			<div class="bg-background w-full">
-				<div class="container pt-4">
-					<PoweredBy />
-				</div>
+<AuroraBackground>
+	<section class="flex h-dvh w-full flex-col overflow-hidden">
+		<div class="relative flex flex-1 flex-col items-center justify-center">
+			<div
+				bind:this={videoContainer}
+				class="rounded-9xl md:rounded-t-9xl absolute inset-0 isolate -z-10 container h-full w-full overflow-hidden rounded-t-none rounded-b border md:mt-20"
+				style={containerStyles}
+			>
+				<video autoplay loop class="-z-10 h-full w-full object-cover">
+					<source src="/hero.mp4?hls" type="video/mp4" />
+				</video>
 			</div>
-		</div>
+			<div class="absolute inset-0 -z-10">
+				<div class="from-background/0 to-background/100 absolute inset-0 bg-gradient-to-b to-98%" />
+			</div>
+			<div class="mx-auto max-w-5xl px-6">
+				<div class="sm:mx-auto lg:mt-0 lg:mr-auto">
+					<h1 class="max-w-2xl text-5xl font-medium text-balance md:text-6xl">
+						Build and Ship 10x faster with NS
+					</h1>
+					<p class="mt-8 max-w-2xl text-lg text-pretty">
+						Tailwindcss highly customizable components for building modern websites and applications
+						that look and feel the way you mean it.
+					</p>
 
-		<div class="mx-auto max-w-5xl px-6">
-			<div class="sm:mx-auto lg:mt-0 lg:mr-auto">
-				<h1 class=" text-5xl font-medium text-balance md:text-6xl">
-					Build and Ship 10x faster with NS
-				</h1>
-				<p class="mt-8 max-w-2xl text-lg text-pretty">
-					Tailwindcss highly customizable components for building modern websites and applications
-					that look and feel the way you mean it.
-				</p>
-
-				<div class="mt-12 flex items-center gap-2">
-					<div
-						class="bg-foreground/10 border p-0.5"
-						style="border-radius: calc(var(--radius) + 4px + 0.125rem);"
-					>
-						<Button size="lg" class="rounded-xl px-5 text-base">
+					<div class="mt-12 flex items-center gap-2">
+						<div
+							class="bg-foreground/10 border p-0.5"
+							style="border-radius: calc(var(--radius) + 4px + 0.125rem);"
+						>
+							<Button size="lg" class="rounded-xl px-5 text-base">
+								<a href="#a">
+									<span class="text-nowrap">Start Building</span>
+								</a>
+							</Button>
+						</div>
+						<Button size="lg" variant="ghost" class="h-10.5 rounded-xl px-5 text-base">
 							<a href="#a">
-								<span class="text-nowrap">Start Building</span>
+								<span class="text-nowrap">Request a demo</span>
 							</a>
 						</Button>
 					</div>
-					<Button size="lg" variant="ghost" class="h-10.5 rounded-xl px-5 text-base">
-						<a href="#a">
-							<span class="text-nowrap">Request a demo</span>
-						</a>
-					</Button>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+		<div class="container">
+			<PoweredBy />
+		</div>
+	</section>
+</AuroraBackground>
 
 <section class="py-16 md:py-32">
 	<div class="@container mx-auto max-w-5xl px-6">
@@ -184,7 +189,7 @@
 </section>
 
 {#snippet card(header: string, content: string)}
-	<Card.Root class="bg-background surface-glass">
+	<Card.Root class="bg-background">
 		<Card.Header class="pb-3">
 			<CardDecorator>
 				<Sparkles class="size-6 rounded-full" aria-hidden />

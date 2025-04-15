@@ -5,6 +5,7 @@
 	import { buttonVariants } from '$lib/components/ui/button/index.js';
 	import CircleHelp from '@lucide/svelte/icons/circle-help';
 	import { page } from '$app/state';
+	import autoAnimate from '@formkit/auto-animate';
 
 	const dropdownTriggerClass = buttonVariants({ variant: 'outline' });
 
@@ -68,7 +69,9 @@
 		</header>
 	</div>
 	<div class="relative container mx-auto flex flex-1 flex-col items-center justify-center">
-		{@render children()}
+		<div class="mx-auto flex w-full flex-col justify-center gap-6 sm:w-[350px]">
+			{@render children()}
+		</div>
 	</div>
 	<div class="md:border-t">
 		<footer class="container">

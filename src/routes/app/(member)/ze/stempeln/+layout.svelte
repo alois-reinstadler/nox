@@ -7,7 +7,7 @@
 	let { children } = $props();
 </script>
 
-<div class="relative flex min-h-dvh w-full flex-col">
+<div class="relative flex w-full flex-col">
 	<div class="container mx-auto flex flex-col justify-between gap-2 px-4 py-4 md:px-8 md:py-6">
 		<h2 class="text-2xl font-bold tracking-tight">Welcome back!</h2>
 		<p class="text-muted-foreground">Here's a list of your tasks for this month!</p>

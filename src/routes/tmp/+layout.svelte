@@ -7,8 +7,6 @@
 	import { cn } from '$lib/utils';
 	import AuroraBackground from '$lib/components/ext/aurora/aurora.svelte';
 
-	import * as Marketing from '$lib/components/marketing';
-
 	let isScrolled = $derived(scrollY.current !== undefined && scrollY.current > 50);
 
 	let { children } = $props();
@@ -22,12 +20,34 @@
 	class="bg-background absolute inset-0 h-full w-full [background:radial-gradient(125%_125%_at_50%_10%,transparent_40%,--red-500_100%)]"
 ></div> -->
 
-<div class="flex min-h-dvh w-full flex-col">
-	<Marketing.Header />
+<div class="z flex min-h-dvh w-full flex-col">
+	<div class="fixed top-0 z-50 w-full" class:border-none={isScrolled}>
+		<header
+			class={cn(
+				'border-border/40 container rounded-3xl px-8 py-4 transition-all',
+				isScrolled && 'bg-background/60 translate-y-4 border backdrop-blur'
+			)}
+		>
+			<div class="flex items-center justify-between gap-4">
+				<h1 class="font-display text-2xl font-black md:py-1">
+					<span class="text-yellow-300">NOX</span>
+					<span>DEV</span>
+				</h1>
+
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger class={buttonVariants({ variant: 'outline' })}
+						>Help <CircleHelp class="h-4 w-4" /></DropdownMenu.Trigger
+					>
+					<DropdownMenu.Content class="min-w-48" align="end">
+						<DropdownMenu.Item class="pr-6">Verify Email</DropdownMenu.Item>
+						<DropdownMenu.Item class="pr-6">Reset Password</DropdownMenu.Item>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</div>
+		</header>
+	</div>
 
 	{@render children()}
-
-	<Marketing.Footer />
 
 	<div class="md:border-t">
 		<footer class="container py-4">

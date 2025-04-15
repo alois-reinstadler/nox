@@ -50,12 +50,10 @@
 </script>
 
 <div class="group bg-background relative w-full">
-	<div class="flex flex-col-reverse items-center md:flex-row">
+	<div class="flex flex-col items-center md:flex-row">
 		<div class="md:max-w-44 md:border-r md:pr-6">
-			<p class="py-4 text-end text-sm font-medium whitespace-nowrap md:py-0">
-				Powered by <br class="hidden md:block" />
-				the best.
-			</p>
+			<p class="text-end text-sm font-medium whitespace-nowrap">Powered by</p>
+			<p class="text-end text-sm font-medium whitespace-nowrap">the best.</p>
 		</div>
 		<!-- Checkout Logo Cloud Three  -->
 		<!-- I have provided progresive blur snippet code & Marquee code -->

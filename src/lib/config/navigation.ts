@@ -10,6 +10,99 @@ import type { SidebarNavItem, NavItem, SidebarNavGroup } from '$lib/types';
 
 export type { SidebarNavItem, NavItem, SidebarNavGroup };
 
+export const appNav: Record<string, SidebarNavItem[]> = {
+	user: [
+		{
+			title: 'Zeiterfassung',
+			href: '#',
+			icon: Clock,
+			items: [
+				{
+					title: 'Übersicht',
+					href: '/app/ze'
+				},
+				{
+					title: 'Stundenbericht',
+					href: '/app/ze/stundenbericht'
+				},
+				{
+					title: 'Ein- und Ausstemplen',
+					href: '/app/ze/stempeln'
+				}
+			]
+		}
+	],
+	admin: [
+		{
+			title: 'Personal',
+			href: '#',
+			icon: Users,
+			items: [
+				{
+					title: 'Übersicht',
+					href: '/app/personal'
+				},
+				{
+					title: 'Lohn und Gehalt',
+					href: '/app/personal/lohn-und-gehalt'
+				},
+				{
+					title: 'Urlaub und Abwesenheit',
+					href: '/app/personal/urlaub-und-abwesenheit'
+				},
+				{
+					title: 'Leistungsbewertung',
+					href: '/app/personal/leistungsbewertung'
+				}
+			]
+		},
+		{
+			title: 'Stammdaten',
+			icon: Building,
+			items: [
+				{
+					title: 'Organisation',
+					href: '/app/stammdaten/organisation'
+				},
+				{
+					title: 'Personal',
+					href: '/app/stammdaten/personal'
+				},
+				{
+					title: 'Kontakte',
+					href: '/app/stammdaten/kontakte' // kunden (customers), lieferanten (suppliers), mitarbeiter (employees), sonstige (other)
+				},
+				{
+					title: 'Produkte & Services',
+					href: '/app/stammdaten/produkte'
+				}
+			]
+		},
+		{
+			title: 'Einstellungen',
+			icon: Settings,
+			items: [
+				{
+					title: 'Profil',
+					href: '/app/einstellungen/profil'
+				},
+				{
+					title: 'Abrechnung',
+					href: '/app/einstellungen/abrechnung'
+				},
+				{
+					title: 'Benachrichtigungen',
+					href: '/app/einstellungen/benachrichtigungen'
+				},
+				{
+					title: 'Layout und Design',
+					href: '/app/einstellungen/layout-und-design'
+				}
+			]
+		}
+	]
+};
+
 export const employeeNavMain: SidebarNavItem[] = [
 	{
 		title: 'Zeiterfassung',
