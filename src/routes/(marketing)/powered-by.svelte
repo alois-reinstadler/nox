@@ -63,7 +63,7 @@
 			<Marquee>
 				{#each partners as partner}
 					<div class="flex dark:invert">
-						<img class="mx-auto max-h-6 min-w-fit" src={partner.logo} alt="{partner.name} Logo" />
+						<img class="mx-auto max-h-6" src={partner.logo} alt="{partner.name} Logo" />
 					</div>
 				{/each}
 			</Marquee>

@@ -8,7 +8,7 @@ export const organization = sqliteTable('organization', {
 		.references(() => user.id),
 
 	name: text('name').notNull(),
-	email: text('email').unique(),
+	email: text('email'),
 	phone: text('phone'),
 
 	logo: text('logo'),

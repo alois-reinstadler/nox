@@ -67,7 +67,7 @@
 			transform: `translateY(${scrollThreshold * progress.current}px)`
 		});
 	});
-	$inspect(scrollProgress);
+
 	$inspect(containerStyles);
 
 	$effect(() => {
@@ -77,9 +77,14 @@
 
 <div class="container" bind:this={containerRef}></div>
 
-<section class="flex h-dvh w-full flex-col overflow-hidden">
+<section class="flex h-dvh w-full flex-col overflow-hidden rounded-4xl">
 	<div class="relative isolate flex h-dvh w-full flex-col items-center justify-center">
-		<video autoplay loop class="absolute inset-0 -z-40 h-full w-full object-cover">
+		<video
+			autoplay
+			loop
+			class="absolute inset-0 -z-40 h-full w-full object-cover"
+			style={containerStyles}
+		>
 			<source src="/hero.mp4?hls" type="video/mp4" />
 		</video>
 		<div class="absolute inset-0 -z-30 flex h-full w-full flex-col">
